@@ -1,0 +1,72 @@
+< canvas  id = ' canvas ' width = 800  height = 800 >
+< guión >
+
+función  polígono ( a , colorBorde , colorRelleno )  {  // a = [20,12,34,56,78,90,112,167,34,56]
+ctx . beginPath ( )
+ctx . strokeStyle  =  colorBorde ;
+ctx . fillStyle  =  colorRelleno ;
+ctx . moveTo ( a [ 0 ] , a [ 1 ] )
+para  ( i = 0 ;  i < a . longitud ;  i + = 2 )
+ctx . lineTo ( a [ i ] ,  a [ i + 1 ] ) ;
+ctx . closePath ( )
+ctx . trazo ( ) ;
+ctx . llenar ( ) ;
+
+}
+
+function  rotacionPunto ( cxOb , cyOb , rot ) {
+var  mr =  [ [ Math . cos ( r ) ,  - Matemáticas . sin ( r ) ] ,  [ Math . sin ( r ) ,  Matemáticas . cos ( r ) ] ]       
+fill_cxOb  =  letra_a . longitud ;
+c_cxOb  =  letra_a [ 0 ] . longitud ;
+fill_cyOb  =  r . longitud ;
+c_cyOb  =  r [ 0 ] . longitud ;
+
+let  rotacion  =  new  Array ( fill_cxOb ) ;
+para  ( x = 0 ;  x < rotacion . longitud ; x ++ )
+    Rotacion [ x ]  =  nueva  matriz ( c_cyOb ) . llenar ( 0 ) ;
+
+para  ( x = 0 ;  x  <  rotacion . longitud ;  x ++ )  {
+        for  ( y = 0 ;  y  <  rotacion [ x ] . length ;  y ++ )  {                                
+            para  ( z = 0 ;  z < c_cxOb ;  z ++ )  {
+                rotacion  [ x ] [ y ]  =  rotacion  [ x ] [ y ]  +  cxOb [ x ] [ z ] * cyOb [ z ] [ y ] ; 
+}
+        }
+    }
+return  rotacion ;
+}
+
+	
+function  RotacionDeObj ( Func , Rot ) {
+var  a  =  [ ] ;
+
+var  m =  [ Math . cos ( Rot ) ,  - Matemáticas . pecado ( putrefacción ) , matemáticas . pecado ( putrefacción ) ,  matemáticas . cos ( Rot ) ]
+
+para  ( i = 0 ;  i  <  Func . longitud ;  i + = 2 ) {            
+
+a [ i ] = ( Func [ i ] * m [ 0 ] + Func [ i + 1 ] * m [ 1 ] )            
+a [ i + 1 ] = ( Func [ i ] * m [ 2 ] + Func [ i + 1 ] * m [ 3 ] )          
+  
+  }
+
+return  a ;
+
+}
+
+	
+var  lienzo  =  documento . getElementById ( 'lienzo' )
+var  ctx  =  lienzo . getContext ( '2d' ) ;  
+
+var  letra_a  =  [ 40 , 40 , 107 , 40 , 139 , 181 , 90 , 181 , 91 , 134 , 49 , 134 , 53 , 185 , 9 , 186 ] ; 
+var  tria_a = [ 50 , 105 , 70 , 64 , 91 , 102 ]
+
+
+var  r  =  75 ;
+var  letra_a_rotada  =  RotacionDeObj ( letra_a ,  r )
+var  tria_a_rotado  =  RotacionDeObj ( tria_a , r )
+polígono ( letra_a ,  'amarillo' ,  'rojo' )
+polígono ( tria_a ,  'amarillo' ,  'blanco' ) 
+polígono ( letra_a_rotada ,  'amarillo' ,  'rojo' )
+
+polígono ( tria_a_rotado , 'amarillo' ,  'blanco' )
+
+</ script >

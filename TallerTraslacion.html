@@ -1,0 +1,33 @@
+< canvas  id = ' tablero ' width = 700  height = 700</ lienzo >
+< guión >
+función  sumatrasl ( v1 , v2 )
+{
+ var  s =  [ ]  ;  // variable para guardar el resultado final
+ para ( var  i = 0 ; i < v1 . longitud ; i ++ )
+{
+s [ i ] =  v1 [ i ] + v2 [ i % 2 == 0 ? 0 : 1 ] ;
+}
+ return  s ; 
+}
+función  polígono ( cd ,  colorBorde ,  colorRelleno ,  grosorLinea )  {    // a = [20, 12, 34, 56, 78, 90, 112, 167, 34, 56]
+  ctx . beginPath ( )
+  ctx . strokeStyle  =  colorBorde ;
+  ctx . fillStyle  =  colorRelleno ;
+  ctx . lineWidth =  grosorLinea ;
+  ctx . moveTo ( cd [ 0 ] , cd [ 1 ] )
+  para  ( i = 2 ;  i  <  cd . longitud ;  i + = 2 )
+  ctx . lineTo ( cd [ i ] , cd [ i + 1 ] ) ;
+  ctx . closePath ( )
+  ctx . trazo ( )
+  ctx . llenar ( )
+}
+var  c  =  documento . getElementById ( 'tablero' )
+var  ctx  =  c . getContext ( '2d' )
+
+
+var  letra_j = [ 40 , 40 , 139 , 41 , 139 , 149 , 114 , 186 , 63 , 187 , 37 , 158 , 37 , 119 , 63 , 118 , 64 , 148 , 74 , 162 , 100 , 163 , 116 , 143 , 117 , 70 , 38, 70 ]
+var  vt = [ 250 , 350 ] ; // vector de traslacion
+var  letra_j_trasladada =  sumatrasl ( letra_j ,  vt )
+polígono ( letra_j ,  'amarillo' , 'rojo' ) ;
+polígono ( letra_j_trasladada ,  'amarillo' ,  'rojo' ) ;
+</ script >
